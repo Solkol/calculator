@@ -16,4 +16,23 @@ body {
     background-color: silver;
     border: 2px solid black;
     border-radius: 4px;
+    aspect-ratio: 5 / 1;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    aspect-ratio: 1.5 / 1;
+    padding: 12px;
+    margin: 2px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+#clear,
+#delete {
+    aspect-ratio: 3 / 1;
 }
