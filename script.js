@@ -14,7 +14,7 @@ btnNumbers.forEach((item) => {
 
 const btnClear = document.querySelector('#clear');
 btnClear.addEventListener('click', () => {
-    display.textContent = '';
+    display.textContent = '0';
 });
 
 const btnDelete = document.querySelector('#delete');
