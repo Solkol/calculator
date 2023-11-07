@@ -8,6 +8,7 @@ const btnNumbers = Array.from(document.querySelectorAll('button.number'));
 btnNumbers.forEach((item) => {
     item.addEventListener('click', (event) => {
         let target = event.target;
+        if (display.textContent === '0') display.textContent = '';
         display.textContent = display.textContent + target.textContent;
     });
 });
