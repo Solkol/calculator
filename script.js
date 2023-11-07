@@ -2,6 +2,16 @@ let firstOperand;
 let secondOperand;
 let operator;
 
+const display = document.querySelector('#display');
+
+const btnNumbers = Array.from(document.querySelectorAll('button.number'));
+btnNumbers.forEach((item) => {
+    item.addEventListener('click', (event) => {
+        let target = event.target;
+        display.textContent = display.textContent + target.textContent;
+    });
+});
+
 function operate(operation, firstNumber, secondNumber) {
     switch (operation) {
         case '+':
