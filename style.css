@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: lightslategrey;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #calculator {
@@ -30,9 +31,15 @@ button {
     margin: 2px;
     border: 2px solid black;
     border-radius: 4px;
+    font-weight: 600;
+    font-size: medium;
 }
 
 #clear,
 #delete {
     aspect-ratio: 3 / 1;
+}
+
+#clear {
+    background-color: red;
 }
