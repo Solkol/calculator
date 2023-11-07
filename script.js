@@ -1,12 +1,13 @@
 let firstOperand;
 let secondOperand;
 let operator;
+let result;
 
 const display = document.querySelector('#display');
 
-const btnNumbers = Array.from(document.querySelectorAll('button.number'));
-btnNumbers.forEach((item) => {
-    item.addEventListener('click', (event) => {
+const numbersArray = Array.from(document.querySelectorAll('button.number'));
+numbersArray.forEach((btnNumber) => {
+    btnNumber.addEventListener('click', (event) => {
         let target = event.target;
         if (display.textContent === '0') display.textContent = '';
         display.textContent = display.textContent + target.textContent;
@@ -23,6 +24,28 @@ btnDelete.addEventListener('click', () => {
     const stringArray = Array.from(display.textContent);
     stringArray.pop();
     display.textContent = stringArray.join('');
+});
+
+const operatorsArray = Array.from(document.querySelectorAll('button.operator'));
+operatorsArray.forEach((btnOperator) => {
+	btnOperator.addEventListener('click', (event) => {
+		let target = event.target;
+		if (!firstOperand) {
+			firstOperand = +display.textContent;
+        } else {
+			secondOperand = +display.textContent;
+			result = operate(operator, firstOperand, secondOperand);
+        }
+        operator = target.textContent;
+	});
+});
+
+const btnEquals = document.querySelector('#equals');
+btnEquals.addEventListener('click', (event) => {
+	secondOperand = +display.textContent;
+	result = operate(operator, firstOperand, secondOperand);
+	display.textContent = result;
+	firstOperand = result;
 });
 
 function operate(operation, firstNumber, secondNumber) {
