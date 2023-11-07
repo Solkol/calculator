@@ -12,6 +12,18 @@ btnNumbers.forEach((item) => {
     });
 });
 
+const btnClear = document.querySelector('#clear');
+btnClear.addEventListener('click', () => {
+    display.textContent = '';
+});
+
+const btnDelete = document.querySelector('#delete');
+btnDelete.addEventListener('click', () => {
+    const stringArray = Array.from(display.textContent);
+    stringArray.pop();
+    display.textContent = stringArray.join('');
+});
+
 function operate(operation, firstNumber, secondNumber) {
     switch (operation) {
         case '+':
