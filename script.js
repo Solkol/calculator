@@ -2,6 +2,7 @@ let firstOperand = 0;
 let secondOperand = 0;
 let operator = '';
 let result = 0;
+let mutexOperator = false;
 
 const display = document.querySelector('#display');
 
@@ -9,7 +10,10 @@ const numbersArray = Array.from(document.querySelectorAll('button.number'));
 numbersArray.forEach((btnNumber) => {
     btnNumber.addEventListener('click', (event) => {
         let target = event.target;
-        if (display.textContent === '0') display.textContent = '';
+        if (display.textContent === '0' || mutexOperator) {
+            display.textContent = '';
+            mutexOperator = false;
+        }
         display.textContent = display.textContent + target.textContent;
     });
 });
@@ -21,7 +25,6 @@ btnClear.addEventListener('click', () => {
     operator = '';
     result = 0;
     display.textContent = '0';
-    
 });
 
 const btnDelete = document.querySelector('#delete');
@@ -41,6 +44,7 @@ operatorsArray.forEach((btnOperator) => {
 			secondOperand = +display.textContent;
 			result = operate(operator, firstOperand, secondOperand);
         }
+        mutexOperator = true;
         operator = target.textContent;
 	});
 });
