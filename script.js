@@ -44,6 +44,7 @@ operatorsArray.forEach((btnOperator) => {
 			firstOperand = +display.textContent;
         } else {
 			btnEquals.dispatchEvent(clickEvent);
+            firstOperand = +display.textContent;
         }
         mutexOperator = true;
         operator = target.textContent;
@@ -54,9 +55,8 @@ const btnEquals = document.querySelector('#equals');
 btnEquals.addEventListener('click', (event) => {
 	secondOperand = +display.textContent;
 	result = operate(operator, firstOperand, secondOperand);
-    //mutexOperator = false;
 	display.textContent = result;
-	firstOperand = result;
+	firstOperand = '';
 });
 
 function operate(operation, firstNumber, secondNumber) {
