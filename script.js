@@ -55,7 +55,7 @@ const btnEquals = document.querySelector('#equals');
 btnEquals.addEventListener('click', (event) => {
     if (firstOperand !== '') {
         secondOperand = +display.textContent;
-        result = operate(operator, firstOperand, secondOperand);
+        result = Math.trunc(operate(operator, firstOperand, secondOperand) * 1000) / 1000; //handles float numbers too
         display.textContent = result;
         firstOperand = '';
     }
