@@ -1,7 +1,7 @@
-let firstOperand;
-let secondOperand;
-let operator;
-let result;
+let firstOperand = 0;
+let secondOperand = 0;
+let operator = '';
+let result = 0;
 
 const display = document.querySelector('#display');
 
@@ -16,7 +16,12 @@ numbersArray.forEach((btnNumber) => {
 
 const btnClear = document.querySelector('#clear');
 btnClear.addEventListener('click', () => {
+    firstOperand = 0;
+    secondOperand = 0;
+    operator = '';
+    result = 0;
     display.textContent = '0';
+    
 });
 
 const btnDelete = document.querySelector('#delete');
