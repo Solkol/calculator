@@ -6,8 +6,8 @@ let mutexOperator = false;
 
 const DIVISION_BY_ZERO = 'Can\'t divide by zero!';
 
-let clickEvent = new Event('click');
-let divisionByZeroEvent = new Event ('click');
+const clickEvent = new Event('click');
+const divisionByZeroEvent = new Event ('click');
 
 const display = document.querySelector('#display');
 
