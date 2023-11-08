@@ -53,10 +53,12 @@ operatorsArray.forEach((btnOperator) => {
 
 const btnEquals = document.querySelector('#equals');
 btnEquals.addEventListener('click', (event) => {
-	secondOperand = +display.textContent;
-	result = operate(operator, firstOperand, secondOperand);
-	display.textContent = result;
-	firstOperand = '';
+    if (firstOperand !== '') {
+        secondOperand = +display.textContent;
+        result = operate(operator, firstOperand, secondOperand);
+        display.textContent = result;
+        firstOperand = '';
+    }
 });
 
 function operate(operation, firstNumber, secondNumber) {
