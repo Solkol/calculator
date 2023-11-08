@@ -4,6 +4,8 @@ let operator = '';
 let result = 0;
 let mutexOperator = false;
 
+let clickEvent = new Event('click');
+
 const display = document.querySelector('#display');
 
 const numbersArray = Array.from(document.querySelectorAll('button.number'));
@@ -38,11 +40,10 @@ const operatorsArray = Array.from(document.querySelectorAll('button.operator'));
 operatorsArray.forEach((btnOperator) => {
 	btnOperator.addEventListener('click', (event) => {
 		let target = event.target;
-		if (!firstOperand) {
+		if (!firstOperand && !mutexOperator) {
 			firstOperand = +display.textContent;
         } else {
-			secondOperand = +display.textContent;
-			result = operate(operator, firstOperand, secondOperand);
+			btnEquals.dispatchEvent(clickEvent);
         }
         mutexOperator = true;
         operator = target.textContent;
@@ -53,6 +54,7 @@ const btnEquals = document.querySelector('#equals');
 btnEquals.addEventListener('click', (event) => {
 	secondOperand = +display.textContent;
 	result = operate(operator, firstOperand, secondOperand);
+    //mutexOperator = false;
 	display.textContent = result;
 	firstOperand = result;
 });
