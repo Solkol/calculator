@@ -18,6 +18,8 @@ body {
     border: 2px solid black;
     border-radius: 4px;
     aspect-ratio: 5 / 1;
+    font-size: 30px;
+    text-align: right;
 }
 
 .row {
