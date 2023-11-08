@@ -34,9 +34,13 @@ btnClear.addEventListener('click', () => {
 
 const btnDelete = document.querySelector('#delete');
 btnDelete.addEventListener('click', () => {
-    const stringArray = Array.from(display.textContent);
-    stringArray.pop();
-    display.textContent = stringArray.join('');
+    if (display.textContent !== DIVISION_BY_ZERO) {
+        const stringArray = Array.from(display.textContent);
+        stringArray.pop();
+        display.textContent = stringArray.join('');
+    } else {
+        btnClear.dispatchEvent(divisionByZeroEvent);
+    }
 });
 
 const operatorsArray = Array.from(document.querySelectorAll('button.operator'));
