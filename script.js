@@ -6,7 +6,7 @@ let mutexOperator = false;
 
 const DIVISION_BY_ZERO = 'Can\'t divide by zero!';
 
-const clickEvent = new Event('click');
+const chainingOperations = new Event('click');
 const divisionByZeroEvent = new Event ('click');
 
 const display = document.querySelector('#display');
@@ -48,7 +48,7 @@ operatorsArray.forEach((btnOperator) => {
             if (firstOperand === '' && !mutexOperator) {
                 firstOperand = +display.textContent;
             } else {
-                btnEquals.dispatchEvent(clickEvent);
+                btnEquals.dispatchEvent(chainingOperations);
                 firstOperand = +display.textContent;
             }
             
