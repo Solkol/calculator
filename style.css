@@ -43,3 +43,18 @@ button {
 #clear {
     background-color: red;
 }
+
+.operator {
+    background-color: tomato;
+    color: white;
+}
+
+#equals {
+    background-color: wheat;
+    color: red;
+}
+
+#dot {
+    background-color: lightgoldenrodyellow;
+    color: red;
+}
