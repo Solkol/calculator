@@ -38,6 +38,7 @@ button {
 #clear,
 #delete {
     aspect-ratio: 3 / 1;
+    background-color: salmon;
 }
 
 #clear {
