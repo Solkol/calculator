@@ -1,4 +1,4 @@
-let firstOperand = 0;
+let firstOperand = '';
 let secondOperand = 0;
 let operator = '';
 let result = 0;
@@ -22,7 +22,7 @@ numbersArray.forEach((btnNumber) => {
 
 const btnClear = document.querySelector('#clear');
 btnClear.addEventListener('click', () => {
-    firstOperand = 0;
+    firstOperand = '';
     secondOperand = 0;
     operator = '';
     result = 0;
@@ -40,7 +40,7 @@ const operatorsArray = Array.from(document.querySelectorAll('button.operator'));
 operatorsArray.forEach((btnOperator) => {
 	btnOperator.addEventListener('click', (event) => {
 		let target = event.target;
-		if (!firstOperand && !mutexOperator) {
+		if (firstOperand === '' && !mutexOperator) {
 			firstOperand = +display.textContent;
         } else {
 			btnEquals.dispatchEvent(clickEvent);
