@@ -3,6 +3,7 @@ let secondOperand = 0;
 let operator = '';
 let result = 0;
 let mutexOperator = false;
+let decimalNumber = false;
 
 const DIVISION_BY_ZERO = 'Can\'t divide by zero!';
 
@@ -29,15 +30,18 @@ btnClear.addEventListener('click', () => {
     secondOperand = 0;
     operator = '';
     result = 0;
+    decimalNumber = false;
     display.textContent = '0';
 });
 
 const btnDelete = document.querySelector('#delete');
 btnDelete.addEventListener('click', () => {
+    let popValue;
     if (display.textContent !== DIVISION_BY_ZERO) {
         const stringArray = Array.from(display.textContent);
-        stringArray.pop();
+        popValue = stringArray.pop();
         display.textContent = stringArray.join('');
+        if (popValue === '.') decimalNumber = false;
     } else {
         btnClear.dispatchEvent(divisionByZeroEvent);
     }
@@ -55,7 +59,7 @@ operatorsArray.forEach((btnOperator) => {
                 btnEquals.dispatchEvent(chainingOperations);
                 firstOperand = +display.textContent;
             }
-            
+            decimalNumber = false;
             mutexOperator = true;
             operator = target.textContent;
         }
@@ -69,9 +73,27 @@ btnEquals.addEventListener('click', (event) => {
         result = operate(operator, firstOperand, secondOperand);
         if (typeof(result) === 'number'){
             result = Math.trunc(result * 1000) / 1000; //handles float numbers too
+            firstOperand = '';
+            if ((String(result)).split('').find(char => char === '.') === 'undefined') {
+                decimalNumber = false;
+            } else {
+                decimalNumber = true;
+            }
         }
         display.textContent = result;
-        firstOperand = '';
+
+    }
+});
+
+const btnDot = document.querySelector('#dot');
+btnDot.addEventListener('click', () => {
+    if (!decimalNumber) {
+        if (mutexOperator) {
+            display.textContent = '0';
+            mutexOperator = false;
+        }
+        display.textContent = display.textContent + '.';
+        decimalNumber = true;
     }
 });
 
